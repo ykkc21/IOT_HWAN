@@ -1,0 +1,68 @@
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+
+sudo apt install git
+
+mkdir mygit
+cd mygit
+sudo git init
+
+- 상태확인
+git status 
+
+-  정보기억
+git config --global user.name yewon-Noh
+git config --global user.mail yewo2nn16@gmail.com
+
+- 등록
+sudo git remote add origin https://github.com/yewon-Noh/IOT_HWAN.git
+sudo git fetch origin
+
+- 받아오기(pull)
+sudo git pull origin master
+
+- 밀어넣기
+sudo git commit -m "commit(커밋메시지)"
+sudo git push origin master
+
+- 모듈 설치
+sudo npm install express
+
+==================== mySQL =======================
+- 설치
+sudo apt install mysql-server
+
+- 기본세팅
+sudo ufw allow mysql
+sudo systemctl start mysql
+sudo systemctl enable mysql
+
+- 접속
+sudo /usr/bin/mysql -u root -p
+1234
+
+- 버전확인
+mysql>show variables like "%version%";
+
+- 비밀번호 변경
+mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('1234');
+
+- DBeaver 연결 위함
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+===============================
+bind-address	= 0.0.0.0 으로 수정
+===============================
+
+- mysql 재시작
+sudo service mysql restart
+
+- 유저 hwanroot 생성
+mysql> create user 'hwanroot'@'%' identified by '1234';
+
+- 데이터베이스 hwan 생성
+mysql> create database hwan default character set utf8;
+
+- 권한 부여
+mysql> grant all on hwan.* to 'hwanroot'@'%' identified by '1234' with grant option;
+mysql> grant all privileges on *.* to 'hwanroot'@'%' with grant option;
