@@ -15,10 +15,10 @@ var server = net.createServer(function(client){
         client.write("Tt");
 
         // 입력받은 값이 1 이면 client에게 led on / 0 이면 led off 메시지 전송
-        if(str == "1"){
+        if (str == "1") {
           console.log("led on");
           client.write("led on");
-        } else if(str == "0"){
+        } else if(str == "0") {
           client.write("led off");
         }
     });
