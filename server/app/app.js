@@ -8,17 +8,14 @@ var server = net.createServer(function(client){
 
     //Client로 부터 오는 data를 화면에 출력
     client.on('data', function(data){
-        var str = data;
-        console.log('Client sent ' + str);
+        var led = data;
+        console.log('Client sent ' + data);
         // console.log('Client sent ' + data.toString());
-        client.write(str);
-        client.write("Tt");
 
         // 입력받은 값이 1 이면 client에게 led on / 0 이면 led off 메시지 전송
-        if (str == 1) {
-          console.log("led on");
+        if(led == 1) {
           client.write("led on");
-        } else if(str == "0") {
+        } else if(led == 0) {
           client.write("led off");
         }
     });
