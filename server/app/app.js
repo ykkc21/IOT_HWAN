@@ -8,7 +8,7 @@ var server = net.createServer(function(client){
 
     //Client로 부터 오는 data를 화면에 출력
     client.on('data', function(data){
-        var str = data.toString();
+        var str = data();
         console.log('Client sent ' + str);
         // console.log('Client sent ' + data.toString());
         client.write(str);
