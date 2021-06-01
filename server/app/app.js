@@ -11,7 +11,9 @@ var server = net.createServer(function(client){
         var str = data.toString();
         console.log('Client sent ' + str);
         // console.log('Client sent ' + data.toString());
-        
+        client.write(str);
+        client.write("Tt");
+
         // 입력받은 값이 1 이면 client에게 led on / 0 이면 led off 메시지 전송
         if(str == "1"){
           console.log("led on");
