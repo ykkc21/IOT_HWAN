@@ -8,7 +8,16 @@ var server = net.createServer(function(client){
 
     //Client로 부터 오는 data를 화면에 출력
     client.on('data', function(data){
-        console.log('Client sent ' + data.toString());
+        var str = data.toString();
+        console.log('Client sent ' + str);
+        // console.log('Client sent ' + data.toString());
+        
+        // 입력받은 값이 1 이면 client에게 led on / 0 이면 led off 메시지 전송
+        if(str == "1"){
+          client.write("led on");
+        } else if(str == "0"){
+          client.write("led off");
+        }
     });
 
     //Client와 접속이 끊기는 메시지 출력
