@@ -1,24 +1,11 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const app = require('express');
 
-app.get('/', function(req, res){
-    // res.sendfile('index.html'); //default page
-    console.log(res);
+app.set('port', process.env.PORT || 3000);
+
+app.get('/', (req, res) => {
+    res.send('Hello, Express');
 });
 
-http.listen(3000, function(){
-    console.log('listening on *:3000');
-});
-
-io.sockets.on('connection', function(socket){
-    //원격에서 접속되면 기본 응답
-    socket.emit('message_from_server', 'hello, world');
-
-    //메시지가 들어 오면 응답
-    socket.on('message_from_client', function(msg){
-        console.log('message:', msg);
-        // 받은 데이터 되돌려주기
-        socket.emit('message_from_server', '"' + msg + '"라고 하셨군요.');
-    });
+app.listen(app.get('port'), () =>{
+    console.log(app.get('port'), '번 포트에서 대기 중');
 });
