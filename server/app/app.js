@@ -15,8 +15,16 @@ const server = app.listen(app.get('port'), () =>{
     console.log(app.get('port'), '번 포트에서 대기 중');
 });
 
-const io = socket(server);
 
-io.on('connection', socket => {
-    console.log('hello');
+
+module.export = (server) => {
+    const io = socket(server);
+
+    io.on('connection', socket => { // 웹 소켓 연결시
+        console.log('hello');
+
+        socket.on('reply', data => {
+            console.log(data);
+        });
 });
+};
