@@ -26,7 +26,7 @@ module.export = (server) => {
 
         socket.on('reply', (data) => {
             console.log(data);
-            socket.emit(data);
+            io.emit(data);
         });
     });
 };
