@@ -25,9 +25,6 @@ sudo git pull origin master
 sudo git commit -m "commit(커밋메시지)"
 sudo git push origin master
 
-- 모듈 설치
-sudo npm install express
-
 ==================== nodejs ======================
 - 설치
 cd ~
@@ -36,6 +33,11 @@ sudo sh ./setup_14.sh
 sudo apt update
 sudo apt install nodejs
 node -v
+
+- 모듈 설치
+sudo npm install express
+sudo npm i -g socket.io
+
 
 ==================== mySQL =======================
 - 설치

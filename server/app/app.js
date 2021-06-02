@@ -1,40 +1,23 @@
-//소켓 서버는 연결을 위한 수신 처리 후 서버 연결을 통한 데이터 송신/수신을 한다.
-//net모듈의 소켓 객체를 사용
-var net = require('net');
+var app = require('express');
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-//서버를 생성
-var server = net.createServer(function(client){
-    console.log('Client connected');
-
-    //Client로 부터 오는 data를 화면에 출력
-    client.on('data', function(data){
-        var led = data;
-        console.log('Client sent ' + data);
-        // console.log('Client sent ' + data.toString());
-
-        // 입력받은 값이 1 이면 client에게 led on / 0 이면 led off 메시지 전송
-        if(led == 1) {
-          client.write("led on");
-        } else if(led == 0) {
-          client.write("led off");
-        }
-    });
-
-    //Client와 접속이 끊기는 메시지 출력
-    client.on('end',function(){
-        console.log('Client disconnected');
-    });
-
-    //Client가 접속하면 화면에 출력해주는 메시지
-    client.write('Hello');
+app.length('/', function(req, res){
+    res.sendfile('index.html'); //default page
 });
 
-//에러가 발생할 경우 화면에 에러 메시지 출력
-server.on('error',function(err){
-    console.log('err'+err);
-})
+http.listen(3000, function(){
+    console.log('listening on *:3000');
+});
 
-//port 8080으로 접속이 가능하도록 대기
-server.listen(8080, function(){
-    console.log('Server listening for connections');
+io.sockets.on('connection', function(socket){
+    //원격에서 접속되면 기본 응답
+    socket.emit('message_from_server', 'hello, world');
+
+    //메시지가 들어 오면 응답
+    socket.on('message_from_client', function(msg){
+        console.log('message:', msg);
+        // 받은 데이터 되돌려주기
+        socket.emit('message_from_server', '"' + msg + '"라고 하셨군요.');
+    });
 });
