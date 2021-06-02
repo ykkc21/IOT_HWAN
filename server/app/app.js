@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const socket = require('socket.io')(server);
+
 
 const app = express();
 
@@ -26,6 +26,8 @@ const server = app.listen(app.get('port'), () =>{
 //         io.emit(data);
 //     });
 // });
+
+const socket = require('socket.io')(server);
 
 io.on('connection', function(socket){
     socket.emit('message_from_server', 'hello, world');
