@@ -36,7 +36,11 @@ node -v
 
 - 모듈 설치
 sudo npm install express
-sudo npm i -g socket.io
+
+-- cd /usr/local/lib/node_modules/
+-- sudo npm i -g socket.io
+
+npm install socket.io --save
 
 
 ==================== mySQL =======================
