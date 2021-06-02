@@ -1,5 +1,4 @@
 sudo apt update
-sudo apt install nodejs
 sudo apt install npm
 
 sudo apt install git
@@ -28,6 +27,15 @@ sudo git push origin master
 
 - 모듈 설치
 sudo npm install express
+
+==================== nodejs ======================
+- 설치
+cd ~
+curl -sL https://deb.nodesource.com/setup_14.x -o setup_14.sh
+sudo sh ./setup_14.sh
+sudo apt update
+sudo apt install nodejs
+node -v
 
 ==================== mySQL =======================
 - 설치
