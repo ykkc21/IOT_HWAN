@@ -1,10 +1,13 @@
 const express = require('express');
+const { Session } = require('node:inspector');
 const path = require('path');
 const socket = require('socket.io');
 
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
+app.set('view engine', 'html');
+
 
 app.get('/', (req, res) => {
     // res.send('Hello, Express');
@@ -16,7 +19,6 @@ const server = app.listen(app.get('port'), () =>{
 });
 
 
-
 module.export = (server) => {
     const io = socket(server);
 
@@ -25,6 +27,7 @@ module.export = (server) => {
 
         socket.on('reply', data => {
             console.log(data);
+            socket.emit(data);
         });
-});
+    });
 };
