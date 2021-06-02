@@ -28,7 +28,7 @@ const server = app.listen(app.get('port'), () =>{
 // });
 
 const socket = require('socket.io')(server);
-
+const io = socket;
 io.on('connection', function(socket){
     socket.emit('message_from_server', 'hello, world');
 
