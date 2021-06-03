@@ -12,6 +12,15 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 });
 
+app.get('/process/login', function(req, res){
+    var paramld = req.param('id');
+
+    console.log('/process/login 처리, id: ' + paramld);
+
+    res.write("Success");
+    res.end();
+})
+
 // 'connection' 이라는 이벤트를 감지한다.
 io.sockets.on('connection', () => {
     console.log('hello');
