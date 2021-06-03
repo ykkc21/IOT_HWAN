@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/process/login', function(req, res){
-    var paramld = req.param('id');
+    var paramld = req.params('id');
 
     console.log('/process/login 처리, id: ' + paramld);
 
