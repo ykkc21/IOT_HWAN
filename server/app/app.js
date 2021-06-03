@@ -13,11 +13,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/process/login', function(req, res){
-    var paramld = req.params.id;
+    // var paramld = req.params.id;
+    const {id} = req.query;
 
-    console.log('/process/login 처리, id: ' + paramld);
+    console.log('/process/login 처리, id: ' + id);
 
-    res.write("Success, id " + paramld);
+    res.write("Success, id " + id);
     res.end();
 })
 
