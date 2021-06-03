@@ -17,6 +17,7 @@ app.get('/process/login', function(req, res){
 
     console.log('/process/login 처리, id: ' + id);
 
+    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
     res.write("Success, id: " + id);
     res.end();
 })
