@@ -3,8 +3,8 @@ sudo apt install npm
 
 sudo apt install git
 
-mkdir mygit
-cd mygit
+mkdir hwan
+cd hwan
 sudo git init
 
 - 상태확인
