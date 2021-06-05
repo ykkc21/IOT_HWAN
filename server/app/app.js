@@ -30,17 +30,17 @@ app.get('/process/login', function(req, res){
     console.log('/process/login 처리, id: ' + id);
 
      // 쿼리 수행
-     const rs = "";
      connection.query('SELECT name FROM roomInfo WHERE room = \'203\'', function(error, results, fields){
         if (error){
             console.log(error);
         }
         console.log(results);
-        rs = results;
+        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        res.write("Success, name: " + results);
     });
 
-    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write("Success, name: " + rs);
+    // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    // res.write("Success, name: " + id);
     res.end();
 })
 
