@@ -37,7 +37,7 @@ app.get('/process/login', function(req, res){
             }
             console.log(results);
 
-            var name = results.name;
+            var name = results;
 
             res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
             res.write("Success, name: " + name);
