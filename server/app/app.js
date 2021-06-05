@@ -1,8 +1,20 @@
 const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+const mysql = require('mysql');
 
 const path = require('path');
+
+// 데이터베이스 정보
+var connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'hwanroot',
+    password : '1234',
+    database : 'hwan'
+});
+
+// 데이터베이스 연결
+connection.connect();
 
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'html');
@@ -17,8 +29,18 @@ app.get('/process/login', function(req, res){
 
     console.log('/process/login 처리, id: ' + id);
 
+     // 쿼리 수행
+     const rs;
+     connection.query('SELECT name FROM roomInfo WHERE room = \'203\'', function(error, results, fields){
+        if (error){
+            console.log(error);
+        }
+        console.log(results);
+        rs = results;
+    });
+
     res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write("Success, id: " + id);
+    res.write("Success, name: " + rs);
     res.end();
 })
 
@@ -76,3 +98,6 @@ net.createServer(function (client){
 }).listen(8080, function(){
     console.log('TCP server is listening on port 8080');
 });
+
+// 데이터베이스 연결해제
+connection.end();
