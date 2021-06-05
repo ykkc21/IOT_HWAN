@@ -42,7 +42,7 @@ app.get('/name/:room', function(req, res){
         }
         console.log(rows);
 
-        name = rows.name;
+        name = rows[0].name;
 
         // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         // res.write("Success, name: " + name);
