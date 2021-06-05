@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 });
 
-app.get('/process/login', function(req, res){
-    var id = req.query('id');
+app.get('/name/:room', function(req, res){
+    var id = req.params.id;
 
     console.log('/process/login 처리, id: ' + id);
     
