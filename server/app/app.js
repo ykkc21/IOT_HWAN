@@ -31,7 +31,8 @@ app.get('/room/:room', function(req, res){
     console.log('room 번호 : ' + room);
 
     // 쿼리 수행
-    var sql = 'SELECT name FROM roomInfo WHERE room = \'' + room + '\'';
+    var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
+    console.log(sql);
     var name = '';
     connection.query(sql, function(error, rows, fields){
         if (error){
