@@ -46,7 +46,9 @@ app.get('/room/:room', function(req, res){
         name = rows[0].name;
         console.log(name);
 
-        res.render('index', { title: name});
+        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        res.write(name);
+        // res.render('index', { title: name});
     });
 
     // res.render('index', { title: name});
