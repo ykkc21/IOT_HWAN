@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
 });
 
 // 데이터베이스 연결
-connection.connect();
+// connection.connect();
 
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'html');
@@ -28,6 +28,9 @@ app.get('/process/login', function(req, res){
     var id = req.param('id');
 
     console.log('/process/login 처리, id: ' + id);
+    
+    // 데이터베이스 연결
+    connection.connect();
 
     // 쿼리 수행
     var sql = 'SELECT name FROM roomInfo WHERE room = \'' + id + '\'';
