@@ -17,7 +17,10 @@ var connection = mysql.createConnection({
 connection.connect();
 
 app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'html'));
+app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+
 
 app.get('/', (req, res) => {
     // res.send('Hello, Express');
@@ -46,9 +49,10 @@ app.get('/room/:room', function(req, res){
 
     var html = "hello" + JSON.stringify(name);
     console.log(html);
-    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write(JSON.stringify(name));
-    res.end();
+    res.render('index', { title: name});
+    // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    // res.write(JSON.stringify(name));
+    // res.end();
 });
 
 // http를 3000 포트에서 실행한다.
