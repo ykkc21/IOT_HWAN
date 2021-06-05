@@ -31,13 +31,13 @@ app.get('/process/login', function(req, res){
 
         // 쿼리 수행
         var sql = 'SELECT name FROM roomInfo WHERE room = \'' + id + '\''
-        connection.query('SELECT name FROM roomInfo WHERE room = \'203\'', function(error, results, fields){
+        connection.query('SELECT name FROM roomInfo WHERE room = \'203\'', function(error, results){
             if (error){
                 console.log(error);
             }
             console.log(results);
 
-            var name = results[0];
+            var name = results[0].name;
 
             res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
             res.write("Success, name: " + name);
