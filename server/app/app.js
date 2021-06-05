@@ -30,8 +30,6 @@ app.get('/room/:room', function(req, res){
 
     console.log('room 번호 : ' + room);
 
-    connection.connect();
-
     // 쿼리 수행
     var sql = 'SELECT name FROM roomInfo WHERE room = \'' + room + '\'';
     var name = '';
@@ -45,12 +43,11 @@ app.get('/room/:room', function(req, res){
         console.log(name);
     });
 
-    connection.end();
-
     var html = 'Hello, ' + name;
     console.log(html);
+
     res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write(html);
+    res.send(html);
     res.end();
 })
 
@@ -110,4 +107,4 @@ net.createServer(function (client){
 });
 
 // 데이터베이스 연결해제
-// connection.end();
+connection.end();
