@@ -17,7 +17,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'html'));
+app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
