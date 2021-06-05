@@ -35,8 +35,8 @@ app.get('/process/login', function(req, res){
             console.log(error);
         }
         console.log(results);
-        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write("Success, name: " + results);
+        // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        // res.write("Success, name: " + results);
     });
 
     // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
