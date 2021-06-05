@@ -49,6 +49,11 @@ app.get('/room/:room', function(req, res){
     res.end();
 });
 
+// http를 3000 포트에서 실행한다.
+server.listen(app.get('port'), () =>{
+    console.log(app.get('port'), '번 포트에서 대기 중');
+});
+
 // TCP 서버 - 현재 사용 안함
 const net = require('net');
 
