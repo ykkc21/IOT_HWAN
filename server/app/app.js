@@ -44,31 +44,9 @@ app.get('/room/:room', function(req, res){
     });
 
     var html = 'Hello, ' + name;
-    console.log(html);
-    
     res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
     res.write(html);
     res.end();
-})
-
-// 'connection' 이라는 이벤트를 감지한다.
-io.sockets.on('connection', () => {
-    console.log('hello');
-    
-    socket.on('emit_from_client', (data) => {
-        console.log('client sent: ' + data);
-        io.sockets.emit('emit_from_server', data);
-    });
-
-    // 연결 종료 감지
-    socket.on('disconnect', function() {
-        console.log('user disconnected');
-    })
-})
-
-// http를 3000 포트에서 실행한다.
-server.listen(app.get('port'), () =>{
-    console.log(app.get('port'), '번 포트에서 대기 중');
 });
 
 // TCP 서버 - 현재 사용 안함
