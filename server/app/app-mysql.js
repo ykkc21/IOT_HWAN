@@ -1,43 +1,19 @@
-const express = require('express');
-const path = require('path');
-const morgan = require('morgan');
-const nunjucks = require('nunjucks');
+var mysql = require('mysql');
 
-const { sequelize } = require('./models');
-
-const app = express();
-app.set('port', process.env.PORT || 3000);
-app.set('view engine', 'html');
-nunjucks.configure('views', {
-    express: app,
-    watch: true,
-});
-sequelize.sync({ force : false })
-    .then(() => {
-        console.log('데이터베이스 연결 성공');
-    })
-    .catch((err) => {
-        console.error(err);
-    });
-
-app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false}));
-
-app.use((req, res, next) => {
-    const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
-    error.status = 404;
-    next(error);
+var connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'hwanroot',
+    password : '1234',
+    database : 'hwan'
 });
 
-app.use((err, req, res, next) => {
-    res.locals.message = err.message;
-    res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
-    res.status(err.status || 500);
-    res.render('error');
+connection.connect();
+
+connection.query('SELECT * FROM roomInfo', function(error, results, fields){
+    if (error){
+        console.log(error);
+    }
+    console.log(results);
 });
 
-app.listen(app.get('port'), () => {
-    console.log(app.get('port'), '번 포트에서 대기 중');
-});
+connection.end();
