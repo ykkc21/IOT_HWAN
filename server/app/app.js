@@ -32,7 +32,7 @@ app.get('/process/login', function(req, res){
         // 쿼리 수행
         var sql = 'SELECT name FROM roomInfo WHERE room = \'' + id + '\'';
         var name = '';
-        connection.query('SELECT * FROM roomInfo WHERE room = \'203\'', function(error, rows, fields){
+        connection.query(sql, function(error, rows, fields){
             if (error){
                 console.log(error);
             }
