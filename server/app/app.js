@@ -29,19 +29,20 @@ app.get('/process/login', function(req, res){
 
     console.log('/process/login 처리, id: ' + id);
     // if(id == 'test'){
-    //     // 쿼리 수행
-    //     connection.query('SELECT name FROM roomInfo WHERE room = \'203\'', function(error, results, fields){
-    //         if (error){
-    //             console.log(error);
-    //         }
-    //         console.log(results);
-    //         // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    //         // res.write("Success, name: " + results);
-    //     });
+        // 쿼리 수행
+        var sql = 'SELECT name FROM roomInfo WHERE room = \'' + id + '\''
+        // connection.query('SELECT name FROM roomInfo WHERE room = \'203\'', function(error, results, fields){
+        //     if (error){
+        //         console.log(error);
+        //     }
+        //     console.log(results);
+            // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+            // res.write("Success, name: " + results);
+        // });
     // }
 
     res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write("Success, name: " + id);
+    res.write("Success, name: " + sql);
     res.end();
 })
 
