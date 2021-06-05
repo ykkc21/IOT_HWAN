@@ -30,7 +30,7 @@ app.get('/process/login', function(req, res){
     console.log('/process/login 처리, id: ' + id);
 
      // 쿼리 수행
-     const rs;
+     const rs = "";
      connection.query('SELECT name FROM roomInfo WHERE room = \'203\'', function(error, results, fields){
         if (error){
             console.log(error);
