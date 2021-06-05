@@ -47,7 +47,7 @@ app.get('/room/:room', function(req, res){
     var html = "hello" + JSON.stringify(name);
     console.log(html);
     res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write(html);
+    res.write(JSON.stringify(name));
     res.end();
 });
 
