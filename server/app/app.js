@@ -37,14 +37,14 @@ app.get('/process/login', function(req, res){
             }
             console.log(results);
 
-            var name = results[0].name;
+            // var name = results[0].name;
 
-            res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-            res.write("Success, name: " + name);
+            // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+            // res.write("Success, name: " + name);
         });
 
-    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write("Success, name: " + sql);
+    // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    // res.write("Success, name: " + sql);
     res.end();
 })
 
