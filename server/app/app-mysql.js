@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const morgan = reuquire('morgan');
+const morgan = require('morgan');
 const nunjucks = require('nunjucks');
 
 const { sequelize } = require('./models');
