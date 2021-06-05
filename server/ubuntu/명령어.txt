@@ -80,3 +80,10 @@ mysql> create database hwan default character set utf8;
 - 권한 부여
 mysql> grant all on hwan.* to 'hwanroot'@'%' identified by '1234' with grant option;
 mysql> grant all privileges on *.* to 'hwanroot'@'%' with grant option;
+
+================================
+- mysql 설치
+sudo npm install mysql
+
+- ejs 설치
+sudo npm install ejs
