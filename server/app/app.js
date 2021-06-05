@@ -25,6 +25,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/name/:room', function(req, res){
+    var params = req.params;
+    console.log(params);
     var id = req.params.id;
 
     console.log('/process/login 처리, id: ' + id);
