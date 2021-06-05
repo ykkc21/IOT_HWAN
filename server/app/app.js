@@ -24,17 +24,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 });
 
-app.get('/name/:room', function(req, res){
+app.get('/room/:room', function(req, res){
     var params = req.params;
-    var id = params.room;
+    var room = params.room;
 
-    console.log('/process/login 처리, id: ' + id);
-    
-    // 데이터베이스 연결
-    // connection.connect();
+    console.log('room 번호 : ' + room);
 
     // 쿼리 수행
-    var sql = 'SELECT name FROM roomInfo WHERE room = \'' + id + '\'';
+    var sql = 'SELECT name FROM roomInfo WHERE room = \'' + room + '\'';
     var name = '';
     connection.query(sql, function(error, rows, fields){
         if (error){
@@ -44,13 +41,10 @@ app.get('/name/:room', function(req, res){
 
         name = rows[0].name;
         console.log(name);
-
-        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write("Success, name: " + name);
     });
 
-    // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    // res.write("Success, name: " + name);
+    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    res.write("Hello, " + name);
     res.end();
 })
 
