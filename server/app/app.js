@@ -92,4 +92,4 @@ net.createServer(function (client){
 });
 
 // 데이터베이스 연결해제
-connection.end();
+// connection.end();
