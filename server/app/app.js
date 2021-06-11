@@ -34,14 +34,13 @@ app.get('/', (req, res) => {
 
 // 거주자 이름 확인
 app.get('/room/:room', function(req, res){
-
-    // 데이터베이스 연결
-    connection.connect();
-
     var params = req.params;
     var room = params.room;
 
     console.log('room 번호 : ' + room);
+
+    // 데이터베이스 연결
+    connection.connect();
 
     // 쿼리 수행
     var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
