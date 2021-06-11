@@ -1,7 +1,10 @@
 const app = require('express')();
 const server = require('http').createServer(app);
-const socket = require('socket.io')(server);
+// const socket = require('socket.io')(server);
 const mysql = require('mysql');
+
+const socketio = require('socket.io');
+const io = socketio.listen(server);
 
 const path = require('path');
 
@@ -115,11 +118,27 @@ app.get('/notice/:room', function(req, res) {
 })
 
 
-
 // http를 3000 포트에서 실행한다.
 server.listen(app.get('port'), () =>{
     console.log(app.get('port'), '번 포트에서 대기 중');
 });
+
+// socket.io
+io.on('connection', function(socket){
+    
+    socket.on('setting', function(data){
+        console.log(`${data} ...`);
+
+        io.emit('hello', data);
+    })
+
+    socket.on('disconnect', function(){
+        console.log('end---');
+    })
+
+})
+
+
 
 // TCP 서버 - 현재 사용 안함
 const net = require('net');
