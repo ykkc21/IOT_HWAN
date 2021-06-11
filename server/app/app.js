@@ -59,12 +59,20 @@ app.get('/room/:room', function(req, res){
 
 });
 
+
+//
+// 아두이노 부분
+//
+
+
+
+
 //
 // 앱 부분
 //
 
 // 화재감지기 제품번호 확인
-app.get('/set/:sensor', function(req, res){
+app.get('/app/set/:sensor', function(req, res){
     var sensor = req.params.sensor;
 
     var sql = 'SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'';
@@ -86,7 +94,7 @@ app.get('/set/:sensor', function(req, res){
 })
 
 // 호실 근처 비상구, 소화기 정보
-app.get('/notice/:room', function(req, res) {
+app.get('/app/notice/:room', function(req, res) {
     var room = req.params.room;
 
     var sql = 'SELECT fe.location AS feLocation, ex.location AS exLocation' + 
