@@ -27,6 +27,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 });
 
+//
+// 테스트용
+//
+
+// 거주자 이름 확인
 app.get('/room/:room', function(req, res){
     var params = req.params;
     var room = params.room;
@@ -58,6 +63,11 @@ app.get('/room/:room', function(req, res){
     // res.end();
 });
 
+//
+// 앱 부분
+//
+
+// 화재감지기 제품번호 확인
 app.get('/set/:sensor', function(req, res){
     var sensor = req.params.sensor;
 
@@ -75,8 +85,37 @@ app.get('/set/:sensor', function(req, res){
         res.end();
         
         
+    });
+})
+
+// 호실 근처 비상구, 소화기 정보
+app.get('/notice/:room', function(req, res) {
+    var room = req.params.room;
+
+    var sql = 'SELECT fe.location AS feLocation, ex.location AS exLocation' + 
+               ' FROM roomInfo ri , fireExtinguisher fe , `exit` ex' +
+               ' WHERE ri.room = ' + room + ' AND fe.feno = ri.feno AND ex.exno = ri.exno ';
+
+
+    var feLocation = '';
+    var exLocation = '';
+    connection.query(sql, function(error, rows, fields){
+        if(error){
+            console.log(error);
+        }
+         
+        feLocation = rows[0].feLocation;
+        exLocation = rows[0].exLocation;
+
+        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        res.write(feLocation + ', ' + exLocation);
+        res.end();
+        
+        
     })
 })
+
+
 
 // http를 3000 포트에서 실행한다.
 server.listen(app.get('port'), () =>{
