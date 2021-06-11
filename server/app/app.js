@@ -124,18 +124,18 @@ server.listen(app.get('port'), () =>{
 });
 
 // socket.io
-io.on('connection', (socket) => {
+io.on("connection", (socket) => {
     console.log('클라이언트 연결');
   
-    socket.on('setting', function(data){
-        console.log(`${data} ...`);
+    // socket.on('setting', function(data){
+    //     console.log(`${data} ...`);
 
-        io.emit('hello', data);
-    })
+    //     io.emit('hello', data);
+    // })
 
-    socket.on('disconnect', function(){
-        console.log('end---');
-    })
+    // socket.on('disconnect', function(){
+    //     console.log('end---');
+    // })
 })
 
 
