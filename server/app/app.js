@@ -124,8 +124,9 @@ server.listen(app.get('port'), () =>{
 });
 
 // socket.io
-io.on('connection', function(socket){
-    
+io.on('connection', (socket) => {
+    console.log('클라이언트 연결');
+  
     socket.on('setting', function(data){
         console.log(`${data} ...`);
 
@@ -135,7 +136,6 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(){
         console.log('end---');
     })
-
 })
 
 
