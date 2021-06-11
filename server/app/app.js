@@ -14,8 +14,8 @@ var connection = mysql.createConnection({
     database : 'hwan'
 });
 
-// // 데이터베이스 연결
-// connection.connect();
+// 데이터베이스 연결
+connection.connect();
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -39,9 +39,6 @@ app.get('/room/:room', function(req, res){
 
     console.log('room 번호 : ' + room);
 
-    // 데이터베이스 연결
-    connection.connect();
-
     // 쿼리 수행
     var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
     console.log(sql);
@@ -60,8 +57,6 @@ app.get('/room/:room', function(req, res){
         res.end();
     });
 
-    // 데이터베이스 연결 해제
-    connection.end();
 });
 
 //
