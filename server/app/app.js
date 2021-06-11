@@ -58,7 +58,6 @@ app.get('/room/:room', function(req, res){
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         res.write(name);
         res.end();
-        socket.emit(name);
         // res.render('index', { title: name});
     });
 
@@ -121,7 +120,7 @@ app.get('/notice/:room', function(req, res) {
 // socket.io
 io.on('connection', (socket) => {
     console.log('user connected');
-    
+
 })
 
 // http를 3000 포트에서 실행한다.
