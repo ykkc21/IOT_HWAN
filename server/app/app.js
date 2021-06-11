@@ -58,20 +58,20 @@ app.get('/room/:room', function(req, res){
     // res.end();
 });
 
-app.get('/set/:room', function(req, res){
-    var room = req.params.room;
+app.get('/set/:sensor', function(req, res){
+    var sensor = req.params.sensor;
 
-    var sql = 'SELECT sensor FROM roomInfo WHERE room = \'' + room + '\'';
-    var sensor = '';
+    var sql = 'SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'';
+    var room = '';
     connection.query(sql, function(error, rows, fields){
         if(error){
             console.log(error);
         }
          
-        sensor = rows[0].sensor;
+        room = rows.room;
         
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write(sensor);
+        res.write(room);
         res.end();
         
         
