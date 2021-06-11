@@ -121,16 +121,7 @@ app.get('/notice/:room', function(req, res) {
 // socket.io
 io.on('connection', (socket) => {
     console.log('user connected');
-  
-    // socket.on('setting', function(data){
-    //     console.log(`${data} ...`);
-
-    //     io.emit('hello', data);
-    // })
-
-    // socket.on('disconnect', function(){
-    //     console.log('end---');
-    // })
+    
 })
 
 // http를 3000 포트에서 실행한다.
