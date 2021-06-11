@@ -68,7 +68,7 @@ app.get('/set/:room', function(req, res){
             console.log(error);
         }
          
-        sensor = rows.sensor;
+        sensor = rows[0].sensor;
         
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         res.write(sensor);
