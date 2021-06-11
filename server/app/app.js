@@ -14,8 +14,8 @@ var connection = mysql.createConnection({
     database : 'hwan'
 });
 
-// 데이터베이스 연결
-connection.connect();
+// // 데이터베이스 연결
+// connection.connect();
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +34,10 @@ app.get('/', (req, res) => {
 
 // 거주자 이름 확인
 app.get('/room/:room', function(req, res){
+
+    // 데이터베이스 연결
+    connection.connect();
+
     var params = req.params;
     var room = params.room;
 
@@ -57,6 +61,7 @@ app.get('/room/:room', function(req, res){
         res.end();
     });
 
+    // 데이터베이스 연결 해제
     connection.end();
 });
 
