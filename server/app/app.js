@@ -103,8 +103,9 @@ app.get('/notice/:room', function(req, res) {
         feLocation = rows[0].feLocation;
         exLocation = rows[0].exLocation;
 
-        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write(feLocation + ', ' + exLocation);
+        // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        // res.write(feLocation + ', ' + exLocation);
+        res.send({fire : feLocation, exit: exLocation});
         res.end();
     })
 })
