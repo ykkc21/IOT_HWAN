@@ -1,6 +1,6 @@
 const app = require('express')();
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const socket = require('socket.io')(server);
 const mysql = require('mysql');
 
 const path = require('path');
@@ -54,6 +54,7 @@ app.get('/room/:room', function(req, res){
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         res.write(name);
         res.end();
+        socket.emit(name);
         // res.render('index', { title: name});
     });
 
@@ -110,8 +111,6 @@ app.get('/notice/:room', function(req, res) {
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         res.write(feLocation + ', ' + exLocation);
         res.end();
-        
-        
     })
 })
 
