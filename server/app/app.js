@@ -1,11 +1,8 @@
 const app = require('express')();
 const server = require('http').createServer(app);
-const { Server } = require('socket.io');
-const io = new Server(server);
+// const { Server } = require('socket.io');
+// const io = new Server(server);
 const mysql = require('mysql');
-
-// const socketio = require('socket.io');
-// const io = socketio.listen(server);
 
 const path = require('path');
 
@@ -58,13 +55,9 @@ app.get('/room/:room', function(req, res){
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         res.write(name);
         res.end();
-        // res.render('index', { title: name});
     });
 
-    // res.render('index', { title: name});
-    // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    // res.write(JSON.stringify(name));
-    // res.end();
+    connection.end();
 });
 
 //
@@ -117,11 +110,11 @@ app.get('/notice/:room', function(req, res) {
     })
 })
 
-// socket.io
-io.on('connection', (socket) => {
-    console.log('user connected');
+// // socket.io
+// io.on('connection', (socket) => {
+//     console.log('user connected');
 
-})
+// })
 
 // http를 3000 포트에서 실행한다.
 server.listen(app.get('port'), () =>{
