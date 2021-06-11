@@ -76,8 +76,9 @@ app.get('/set/:sensor', function(req, res){
          
         room = rows[0].room;
         
-        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write(room);
+        // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        // res.write(room);
+        res.send({roomNum : room});
         res.end();
         
         
