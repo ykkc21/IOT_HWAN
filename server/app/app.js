@@ -1,10 +1,10 @@
 const app = require('express')();
 const server = require('http').createServer(app);
-// const socket = require('socket.io')(server);
+const io = require('socket.io')(server);
 const mysql = require('mysql');
 
-const socketio = require('socket.io');
-const io = socketio.listen(server);
+// const socketio = require('socket.io');
+// const io = socketio.listen(server);
 
 const path = require('path');
 
