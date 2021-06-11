@@ -58,6 +58,26 @@ app.get('/room/:room', function(req, res){
     // res.end();
 });
 
+app.get('/set/:room', function(req, res){
+    var room = req.params.room;
+
+    var sql = 'SELECT sensor FROM roomInfo WHERE room = \'' + room + '\'';
+    var sensor = '';
+    connection.query(sql, function(error, rows, fields){
+        if(error){
+            console.log(error);
+        }
+         
+        sensor = rows.sensor;
+        
+        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        res.write(sensor);
+        res.end();
+        
+        
+    })
+})
+
 // http를 3000 포트에서 실행한다.
 server.listen(app.get('port'), () =>{
     console.log(app.get('port'), '번 포트에서 대기 중');
