@@ -143,11 +143,13 @@ net.createServer(function (client){
         // console.log('Client sent ' + data.toString());
 
         // 입력받은 값이 1 이면 client에게 led on / 0 이면 led off 메시지 전송
-        if(led == "hi") {
-          client.write("hello!");
-        } else if(led == 0) {
-          client.write("led off");
-        }
+        // if(led == "hi") {
+        //   client.write("hello!");
+        // } else if(led == 0) {
+        //   client.write("led off");
+        // }
+
+        client.write("hello!!");
     });
 
     //Client와 접속이 끊기는 메시지 출력
