@@ -143,8 +143,8 @@ net.createServer(function (client){
         // console.log('Client sent ' + data.toString());
 
         // 입력받은 값이 1 이면 client에게 led on / 0 이면 led off 메시지 전송
-        if(led == 1) {
-          client.write("led on");
+        if(led == "hi") {
+          client.write("hello!");
         } else if(led == 0) {
           client.write("led off");
         }
