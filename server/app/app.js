@@ -133,7 +133,6 @@ server.listen(app.get('port'), () =>{
 
 // TCP 서버 - 현재 사용 안함
 const net = require('net');
-const { query } = require('express');
 
 net.createServer(function (client){
     console.log('Client connected');
