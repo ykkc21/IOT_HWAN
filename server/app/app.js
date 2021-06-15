@@ -133,6 +133,7 @@ server.listen(app.get('port'), () =>{
 
 // TCP 서버 - 현재 사용 안함
 const net = require('net');
+// const { query } = require('express');
 
 net.createServer(function (client){
     console.log('Client connected');
@@ -153,7 +154,9 @@ net.createServer(function (client){
         // }
 
         // client.write("hello!!");
-        var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
+        var sql = 'SELECT fe.location AS feLocation, ex.location AS exLocation' + 
+        ' FROM roomInfo ri , fireExtinguisher fe , `exit` ex' +
+        ' WHERE ri.room = ' + room + ' AND fe.feno = ri.feno AND ex.exno = ri.exno ';
         
         query.select(sql);
     });
