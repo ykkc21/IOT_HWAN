@@ -29,6 +29,6 @@ net.createServer(function (client){
 
     //Client가 접속하면 화면에 출력해주는 메시지
     client.write('Hello form tcp server');
-}).listen(2222, function(){
+}).listen(3030, function(){
     console.log('TCP server is listening on port 3030');
 });
