@@ -10,7 +10,7 @@ net.createServer(function (client){
     module.exports.client = client;
 
     //Client로 부터 오는 data를 화면에 출력
-    appclient.on('data', function(data){
+    client.on('data', function(data){
         var room = data;
         console.log('Client sent ' + data);
         

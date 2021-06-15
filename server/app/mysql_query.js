@@ -1,6 +1,7 @@
 //mysql모듈 - mysql 사용
-var mysql = require('mysql')
-var server = require('./app')
+const mysql = require('mysql')
+const app = require('./app')
+const arduino = require('./arduino')
 
 // 데이터베이스 부분
 // 데이터베이스와 연결할 객체 생성
@@ -59,8 +60,8 @@ module.exports.select = function(sql) {
 
       var result = JSON.stringify(rows)
       console.log(result)
-      server.client.write("success : " + result)
-      // server.appclient.write("succes : " + result)
+      app.client.write("success : " + result)
+      arduino.client.write("succes : " + result)
     } 
   })
 }
