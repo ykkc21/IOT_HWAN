@@ -149,7 +149,7 @@ net.createServer(function (client){
         //   client.write("led off");
         // }
 
-        client.write("hello!!");
+        client.write('hello!!');
     });
 
     //Client와 접속이 끊기는 메시지 출력
