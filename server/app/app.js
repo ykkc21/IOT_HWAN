@@ -3,6 +3,7 @@ const server = require('http').createServer(app);
 // const { Server } = require('socket.io');
 // const io = new Server(server);
 const mysql = require('mysql');
+const query = require('./mysql_query');
 
 const path = require('path');
 
@@ -43,19 +44,25 @@ app.get('/room/:room', function(req, res){
     var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
     console.log(sql);
     var name = '';
-    connection.query(sql, function(error, rows, fields){
-        if (error){
-            console.log(error);
-        }
-        console.log(rows);
+    query.select(sql);
 
-        name = rows[0].name;
-        console.log(name);
+    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    res.write(name);
+    res.end();
+    
+    // connection.query(sql, function(error, rows, fields){
+    //     if (error){
+    //         console.log(error);
+    //     }
+    //     console.log(rows);
 
-        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write(name);
-        res.end();
-    });
+    //     name = rows[0].name;
+    //     console.log(name);
+
+    //     res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    //     res.write(name);
+    //     res.end();
+    // });
 
 });
 
@@ -150,6 +157,7 @@ net.createServer(function (client){
         // }
 
         client.write('hello!!');
+        
     });
 
     //Client와 접속이 끊기는 메시지 출력
