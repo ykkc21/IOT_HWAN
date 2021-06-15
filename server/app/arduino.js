@@ -1,16 +1,16 @@
 const net = require('net');
 const mysql = require('mysql');
 const query = require('./mysql_query');
-const arduino = require('./arduino');
+const app = require('./app');
 
-// 앱
+// 아두이노
 net.createServer(function (client){
-    console.log('Client connected, 8080');
+    console.log('Client connected, 3030');
 
     module.exports.client = client;
 
     //Client로 부터 오는 data를 화면에 출력
-    appclient.on('data', function(data){
+    client.on('data', function(data){
         var room = data;
         console.log('Client sent ' + data);
         
@@ -29,6 +29,6 @@ net.createServer(function (client){
 
     //Client가 접속하면 화면에 출력해주는 메시지
     client.write('Hello form tcp server');
-}).listen(8080, function(){
-    console.log('TCP server is listening on port 8080');
+}).listen(3030, function(){
+    console.log('TCP server is listening on port 3030');
 });
