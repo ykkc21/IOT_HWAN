@@ -34,7 +34,7 @@ net.createServer(function (client){
 
 // 앱
 net.createServer(function (appclient){
-    console.log('Client connected');
+    console.log('Client connected, 1111');
 
     module.exports.appclient = appclient;
 
@@ -58,6 +58,6 @@ net.createServer(function (appclient){
 
     //Client가 접속하면 화면에 출력해주는 메시지
     appclient.write('Hello form tcp server');
-}).listen(9000, function(){
-    console.log('TCP server is listening on port 8080');
+}).listen(1111, function(){
+    console.log('TCP server is listening on port 1111');
 });
