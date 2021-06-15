@@ -35,9 +35,6 @@ app.get('/', (req, res) => {
 
 // 거주자 이름 확인
 app.get('/room/:room', function(req, res){
-
-    module.exports.res = res;
-
     var params = req.params;
     var room = params.room;
 
@@ -47,25 +44,19 @@ app.get('/room/:room', function(req, res){
     var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
     console.log(sql);
     var name = '';
-    query.select(sql);
+    connection.query(sql, function(error, rows, fields){
+        if (error){
+            console.log(error);
+        }
+        console.log(rows);
 
-    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write(name);
-    res.end();
-    
-    // connection.query(sql, function(error, rows, fields){
-    //     if (error){
-    //         console.log(error);
-    //     }
-    //     console.log(rows);
+        name = rows[0].name;
+        console.log(name);
 
-    //     name = rows[0].name;
-    //     console.log(name);
-
-    //     res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    //     res.write(name);
-    //     res.end();
-    // });
+        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        res.write(name);
+        res.end();
+    });
 
 });
 
@@ -142,13 +133,16 @@ server.listen(app.get('port'), () =>{
 
 // TCP 서버 - 현재 사용 안함
 const net = require('net');
+const { query } = require('express');
 
 net.createServer(function (client){
     console.log('Client connected');
 
+    module.exports.client = client;
+
     //Client로 부터 오는 data를 화면에 출력
     client.on('data', function(data){
-        var led = data;
+        var room = data;
         console.log('Client sent ' + data);
         // console.log('Client sent ' + data.toString());
 
@@ -159,8 +153,12 @@ net.createServer(function (client){
         //   client.write("led off");
         // }
 
-        client.write('hello!!');
-        
+        // client.write("hello!!");
+        var sql = 'SELECT fe.location AS feLocation, ex.location AS exLocation' + 
+               ' FROM roomInfo ri , fireExtinguisher fe , `exit` ex' +
+               ' WHERE ri.room = ' + room + ' AND fe.feno = ri.feno AND ex.exno = ri.exno ';
+
+        query.select(sql);
     });
 
     //Client와 접속이 끊기는 메시지 출력

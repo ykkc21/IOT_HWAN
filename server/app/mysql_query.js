@@ -59,9 +59,7 @@ module.exports.select = function(sql) {
 
       var result = JSON.stringify(rows)
       console.log(result)
-      server.res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-      server.res.write(result)
-      // server.client.write("success : " + result)
+      server.client.write("success : " + result)
     } 
   })
 }
