@@ -43,7 +43,7 @@ app.get('/room/:room', function(req, res){
     // 쿼리 수행
     var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
     console.log(sql);
-    var name = '';
+    module.exports.name = '';
     query.select(sql);
 
     res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
