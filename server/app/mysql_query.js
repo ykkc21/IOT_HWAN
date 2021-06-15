@@ -57,9 +57,10 @@ module.exports.select = function(sql) {
       server.client.write("false")
     } else {
 
-      server.name = rows[0].name;
-      // var result = JSON.stringify(rows)
-      // console.log(result)
+      var result = JSON.stringify(rows)
+      console.log(result)
+      server.res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+      server.res.write(result)
       // server.client.write("success : " + result)
     } 
   })

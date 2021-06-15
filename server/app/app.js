@@ -35,6 +35,9 @@ app.get('/', (req, res) => {
 
 // 거주자 이름 확인
 app.get('/room/:room', function(req, res){
+
+    module.exports.res = res;
+
     var params = req.params;
     var room = params.room;
 
