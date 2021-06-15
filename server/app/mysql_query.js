@@ -60,7 +60,7 @@ module.exports.select = function(sql) {
       var result = JSON.stringify(rows)
       console.log(result)
       server.client.write("success : " + result)
-      server.appclient.write("succes : " + result)
+      // server.appclient.write("succes : " + result)
     } 
   })
 }
