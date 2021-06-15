@@ -58,7 +58,7 @@ module.exports.select = function(sql) {
     } else {
 
       var result = JSON.stringify(rows)
-      console.log(result)
+      console.log(result.name)
       server.client.write("success : " + result)
     } 
   })
