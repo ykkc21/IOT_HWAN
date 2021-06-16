@@ -1,6 +1,6 @@
 //mysql모듈 - mysql 사용
 const mysql = require('mysql')
-const android = require('./app')
+const app = require('./app')
 const arduino = require('./arduino')
 
 // 데이터베이스 부분
@@ -60,10 +60,8 @@ module.exports.select = function(sql) {
 
       var result = JSON.stringify(rows)
       console.log(result)
-      android.res.send("success : " + result)
-      android.res.end()
-      // arduino.client.send("succes : " + result)
-
+      app.client.write("success : " + result)
+      arduino.client.write("succes : " + result)
     } 
   })
 }
