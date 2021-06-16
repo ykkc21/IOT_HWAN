@@ -3,6 +3,11 @@ const server = require('http').createServer(app);
 const query = require('./mysql_query');
 const path = require('path');
 const android = require('./app')
+const mysql = require('mysql')
+
+
+// 데이터베이스 연결
+connection.connect();
 
 app.set('port', process.env.PORT || 3030);
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +25,7 @@ app.get('/', (req, res) => {
 //
 
 // 거주자 이름 확인
-app.get('/room/:room', function(req, res){
+app.get('/arduino/room/:room', function(req, res){
     var params = req.params;
     var room = params.room;
 
@@ -39,8 +44,9 @@ app.get('/room/:room', function(req, res){
         name = rows[0].name;
         console.log(name);
 
-        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write(name);
+        // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        // res.write(name);
+        res.send(name);
         res.end();
     });
 
@@ -53,7 +59,7 @@ app.get('/room/:room', function(req, res){
 
 
 
-// http를 3000 포트에서 실행한다.
+// http를 3030 포트에서 실행한다.
 server.listen(app.get('port'), () =>{
     console.log(app.get('port'), '번 포트에서 대기 중');
 });
