@@ -3,7 +3,7 @@ const server = require('http').createServer(app);
 // const { Server } = require('socket.io');
 // const io = new Server(server);
 const mysql = require('mysql');
-const query = require('./mysql_query');
+// const query = require('./mysql_query');
 
 const path = require('path');
 
