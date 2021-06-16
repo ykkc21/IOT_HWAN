@@ -4,9 +4,6 @@ const query = require('./mysql_query');
 const path = require('path');
 const android = require('./app')
 
-// 데이터베이스 연결
-connection.connect();
-
 app.set('port', process.env.PORT || 3030);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
