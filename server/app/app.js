@@ -99,7 +99,7 @@ app.get('/app/gas/:room', function(req, res){
 
     var room = req.params.room;
 
-    var sql = 'SELECT gas FROM gasHistory WHERE room=\'' + room + '\' ORDER BY date LIMIT 1';
+    var sql = 'SELECT gas FROM gasHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
 
     query.select(sql)
 })
