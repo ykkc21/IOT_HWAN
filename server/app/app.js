@@ -3,6 +3,22 @@ const server = require('http').createServer(app);
 const query = require('./mysql_query');
 const path = require('path');
 const arduino = require('./arduino')
+const mysql = require('mysql')
+
+// 데이터베이스 부분
+// 데이터베이스와 연결할 객체 생성
+var connection = mysql.createConnection({
+    // DataBase 주소
+    host : 'localhost',
+    // user
+    user : 'hwanroot',
+    // password
+    password : '1234',
+    // DataBase 이름
+    database : 'hwan'
+})
+// 데이터베이스 연결
+connection.connect()
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
