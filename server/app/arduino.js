@@ -32,7 +32,6 @@ app.get('/arduino/sensor/:sensor/gas/:gas', function(req, res){
 
     var newDate = new Date();
     // var time = newDate.toFormat('YYYYMMDDHHmmss');
-    // var time = newDate.toFormat('%Y%m%d%H%M%S')
     var time = newDate.toFormat('YYYYMMDDHH') + newDate.getMinutes() + newDate.getSeconds();
 
     var sql = 'INSERT INTO hwan.gasHistory (room, `date`, gas) VALUES((SELECT room FROM roomInfo WHERE sensor = \'' 
@@ -50,7 +49,12 @@ app.get('/arduino/sensor/:sensor/fire', function(req, res){
     var params = req.params;
     var sensor = params.sensor;
 
-    var sql = 'INSERT INTO fireHistory (`date`, room) VALUES(NOW(), (SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'))';
+    var newDate = new Date();
+    // var time = newDate.toFormat('YYYYMMDDHHmmss');
+    var time = newDate.toFormat('YYYYMMDDHH') + newDate.getMinutes() + newDate.getSeconds();
+
+
+    var sql = 'INSERT INTO fireHistory (`date`, room) VALUES(\'' + time + '\', (SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'))';
 
     query.insert(sql);
 
