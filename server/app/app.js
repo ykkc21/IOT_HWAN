@@ -112,12 +112,25 @@ app.get('/app/notice/:room', function(req, res) {
     query.select(sql)
 })
 
+// 화재 이력
 app.get('/app/history', function(req, res){
 
     module.exports.res = res;
 
-    var sql = 'SELECT fireNo, `date`, room FROM fireHistory ORDER BY fireNo DESC';
+    var sql = 'SELECT `date`, room FROM fireHistory ORDER BY fireNo DESC LIMIT 15';
     
+    query.select(sql)
+})
+
+// 가스 데이터
+app.get('/app/gas/:room', function(req, res){
+
+    module.exports.res = res;
+
+    var room = req.params.room;
+
+    var sql = 'SELECT gas FROM gasHistory WHERE room=\'' + room + '\' ORDER BY date LIMIT 1';
+
     query.select(sql)
 })
 
