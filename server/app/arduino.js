@@ -71,6 +71,9 @@ app.get('/arduino/room/:room', function(req, res){
 
 // 가스 데이터 수신
 app.get('/arduino/sensor/:sensor/gas/:gas', function(req, res){
+
+    module.exports.res = res;
+
     var params = req.params;
     var sensor = params.sensor;
     var gas = params.gas;
@@ -80,16 +83,19 @@ app.get('/arduino/sensor/:sensor/gas/:gas', function(req, res){
 
     query.insert(sql);
 })
+
+// 화재 발생 수신
 app.get('/arduino/sensor/:sensor/fire/:fire', function(req, res){
+
+    module.exports.res = res;
+
+
     var params = req.params;
     var sensor = req.sensor;
     var fire = req.fire;
 
 
 })
-// 화재 발생 수신
-
-
 
 // http를 3030 포트에서 실행한다.
 server.listen(app.get('port'), () =>{
