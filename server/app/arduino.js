@@ -31,8 +31,9 @@ app.get('/arduino/sensor/:sensor/gas/:gas', function(req, res){
     var gas = params.gas;
 
     var newDate = new Date();
-    var time = newDate.toFormat('YYYYMMDDHHmmss');
+    // var time = newDate.toFormat('YYYYMMDDHHmmss');
     // var time = newDate.toFormat('%Y%m%d%H%M%S')
+    var time = newDate.toFormat('YYYYMMDD') + newDate.getHours() + newDate.getMinutes() + newDate.getSeconds();
 
     var sql = 'INSERT INTO hwan.gasHistory (room, `date`, gas) VALUES((SELECT room FROM roomInfo WHERE sensor = \'' 
         + sensor + '\'), \'' + time + '\', ' + gas + ')';
