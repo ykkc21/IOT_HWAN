@@ -56,16 +56,19 @@ app.get('/room/:room', function(req, res){
         if (error){
             console.log(error);
         }
-        console.log(rows);
+        // console.log(rows);
 
         // name = rows[0].name;
         // console.log(name);
         // t = rows[0].t;
         // console.log(t);
 
-        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         // res.write(name);
-        res.write(rows);
+        // res.write(rows);
+        var result = JSON.stringify(rows)
+        console.log(result)
+        res.send(result);
         res.end();
     });
 
