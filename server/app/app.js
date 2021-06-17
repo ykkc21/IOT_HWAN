@@ -62,6 +62,7 @@ app.get('/app/set/:sensor', function(req, res){
     var sensor = req.params.sensor;
 
     var sql = 'SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'';
+    var room = '';
 
     query.select(sql)
 })
