@@ -112,6 +112,15 @@ app.get('/app/notice/:room', function(req, res) {
     query.select(sql)
 })
 
+app.get('/app/history', function(req, res){
+
+    module.exports.res = res;
+
+    var sql = 'SELECT fireNo, `date`, room FROM fireHistory ORDER BY fireNo DESC';
+    
+    query.select(sql)
+})
+
 // http를 3000 포트에서 실행한다.
 server.listen(app.get('port'), () =>{
     console.log(app.get('port'), '번 포트에서 대기 중');

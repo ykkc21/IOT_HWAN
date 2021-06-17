@@ -49,7 +49,6 @@ module.exports.truncate = function(table) {
 
 // SELECT 문
 module.exports.select = function(sql) {
-  // var sql = 'SELECT * FROM ' + table;
   console.log(sql)
   connection.query(sql, function(err, rows) {
     console.log(rows);
