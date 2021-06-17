@@ -90,7 +90,7 @@ app.get('/app/notice/:room', function(req, res) {
 
     var sql = 'SELECT fe.location AS feLocation, ex.location AS exLocation' + 
                ' FROM roomInfo ri , fireExtinguisher fe , `exit` ex' +
-               ' WHERE ri.room = ' + room + ' AND fe.feno = ri.feno AND ex.exno = ri.exno ';
+               ' WHERE ri.room = \'' + room + '\' AND fe.feno = ri.feno AND ex.exno = ri.exno ';
 
 
     var feLocation = '';
