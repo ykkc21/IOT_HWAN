@@ -47,7 +47,8 @@ app.get('/room/:room', function(req, res){
 
     // 쿼리 수행
     // var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
-    var sql = 'SELECT room, `date` as t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
+    // var sql = 'SELECT room, `date` as t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
+    var sql = 'SELECT room, DATE_FORMAT(`date`, "%Y-%m-%d %H:%i:%s") AS t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
 
     console.log(sql);
     // var name = '';
@@ -66,7 +67,7 @@ app.get('/room/:room', function(req, res){
         // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         // res.write(name);
         // res.write(rows);
-        var result = rows[0].t;
+        var result = JSON.stringify(rows)
         console.log(result)
         res.send(result);
         res.end();
