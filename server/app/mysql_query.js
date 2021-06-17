@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
 connection.connect()
 
 // INSERT 문
-module.exports.insert = function(table, classnum, name, score) {
+module.exports.insert = function(sql) {
   // var sql = 'INSERT INTO ' + table + ' values(?,?,?);';
   // var params = [classnum, name, score];
   console.log(sql)
