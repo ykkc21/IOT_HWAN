@@ -54,7 +54,7 @@ sudo systemctl enable mysql
 
 - 접속
 sudo /usr/bin/mysql -u root -p
-1234
+1111
 
 - 버전확인
 mysql>show variables like "%version%";
