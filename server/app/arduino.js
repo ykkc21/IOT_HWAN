@@ -70,7 +70,7 @@ app.get('/arduino/room/:room', function(req, res){
 //
 
 // 가스 데이터 수신
-app.get('/arduino/gas/:sensor/gas/:gas', function(req, res){
+app.get('/arduino/sensor/:sensor/gas/:gas', function(req, res){
     var params = req.params;
     var sensor = params.sensor;
     var gas = params.gas;
