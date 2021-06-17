@@ -51,7 +51,7 @@ app.get('/room/:room', function(req, res){
 
     console.log(sql);
     // var name = '';
-    var t = '';
+    var result = '';
     connection.query(sql, function(error, rows, fields){
         if (error){
             console.log(error);
@@ -66,7 +66,7 @@ app.get('/room/:room', function(req, res){
         // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         // res.write(name);
         // res.write(rows);
-        var result = JSON.stringify(rows)
+        var result = rows[0].t;
         console.log(result)
         res.send(result);
         res.end();
