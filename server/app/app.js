@@ -113,7 +113,7 @@ app.get('/app/history', function(req, res){
 
     module.exports.res = res;
 
-    var sql = 'SELECT `date`, room FROM fireHistory ORDER BY fireNo DESC LIMIT 15';
+    var sql = 'SELECT DATE_FORMAT(`date`, "%Y-%m-%d %H:%i:%s") AS t, room FROM fireHistory ORDER BY fireNo DESC LIMIT 15';
     
     query.select(sql)
 })
@@ -138,7 +138,7 @@ app.get('/app/fire/:room', function(req, res){
 
     var room = req.params.room;
 
-    var sql = 'SELECT room, `date` FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
+    var sql = 'SELECT room, DATE_FORMAT(`date`, "%Y-%m-%d %H:%i:%s") AS t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
 
     query.select(sql)
 })
