@@ -20,8 +20,8 @@ connection.connect()
 
 // INSERT 문
 module.exports.insert = function(table, classnum, name, score) {
-  var sql = 'INSERT INTO ' + table + ' values(?,?,?);';
-  var params = [classnum, name, score];
+  // var sql = 'INSERT INTO ' + table + ' values(?,?,?);';
+  // var params = [classnum, name, score];
   console.log(sql)
   connection.query(sql, params, function(err, rows) {
     console.log(rows);
@@ -30,20 +30,6 @@ module.exports.insert = function(table, classnum, name, score) {
     }else{
       server.client.write("false")
     }
-  })
-}
-
-module.exports.truncate = function(table) {
-  var sql = 'TRUNCATE ' + table;
-  console.log(sql)
-  connection.query(sql, function(err, rows) {
-    console.log(rows);
-    if (err){
-      //throw err;
-      server.client.write("false")
-    } else {
-      server.client.write("success")
-    } 
   })
 }
 

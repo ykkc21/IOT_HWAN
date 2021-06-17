@@ -75,9 +75,18 @@ app.get('/arduino/sensor/:sensor/gas/:gas', function(req, res){
     var sensor = params.sensor;
     var gas = params.gas;
 
-    console.log(sensor + ", " + gas);
-})
+    var sql = 'INSERT INTO hwan.gasHistory (room, `date`, gas) VALUES((SELECT room FROM roomInfo WHERE sensor = \'' 
+        + sensor + '\'), NOW(), ' + gas + ')';
 
+    query.insert(sql);
+})
+app.get('/arduino/sensor/:sensor/fire/:fire', function(req, res){
+    var params = req.params;
+    var sensor = req.sensor;
+    var fire = req.fire;
+
+
+})
 // 화재 발생 수신
 
 
