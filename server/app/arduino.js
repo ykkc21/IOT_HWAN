@@ -42,7 +42,7 @@ app.get('/arduino/sensor/:sensor/fire', function(req, res){
 
 
     var params = req.params;
-    var sensor = req.sensor;
+    var sensor = params.sensor;
 
     var sql = 'INSERT INTO fireHistory (`date`, room) VALUES(NOW(), (SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'))';
 
