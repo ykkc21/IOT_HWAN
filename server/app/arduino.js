@@ -60,11 +60,21 @@ app.get('/arduino/sensor/:sensor/fire', function(req, res){
 
     var params = req.params;
     var sensor = params.sensor;
-
     var newDate = new Date();
+    
     // var time = newDate.toFormat('YYYYMMDDHHmmss');
-    var time = newDate.toFormat('YYYYMMDDHH') + newDate.getMinutes() + newDate.getSeconds();
+    var yyyymmddhh = newDate.toFormat('YYYYMMDDHH')
+    var min = newDate.getMinutes();
+    if(min < 10){
+        min = '0' + min;
+    }
+    var sec = newDate.getSeconds()
+    if(sec < 10){
+        sec = '0' + sec;
+    }
 
+    // var time = newDate.toFormat('YYYYMMDDHH') + newDate.getMinutes() + newDate.getSeconds();
+    var time = yyyymmddhh + min + sec;
 
     var sql = 'INSERT INTO fireHistory (`date`, room) VALUES(\'' + time + '\', (SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'))';
 
