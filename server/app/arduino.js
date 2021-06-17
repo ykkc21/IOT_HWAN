@@ -69,6 +69,17 @@ app.get('/arduino/room/:room', function(req, res){
 // 아두이노 부분
 //
 
+// 가스 데이터 수신
+app.get('/arduino/gas/:sensor/:gas', function(req, res){
+    var params = req.params;
+    var sensor = params.sensor;
+    var gas = params.gas;
+
+    console.log(sensor + ", " + gas);
+})
+
+// 화재 발생 수신
+
 
 
 // http를 3030 포트에서 실행한다.
