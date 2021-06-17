@@ -23,7 +23,7 @@ module.exports.insert = function(sql) {
   // var sql = 'INSERT INTO ' + table + ' values(?,?,?);';
   // var params = [classnum, name, score];
   console.log(sql)
-  connection.query(sql, params, function(err, rows) {
+  connection.query(sql, function(err, rows) {
     console.log(rows);
     if(rows != undefined){
       server.client.write("success")
