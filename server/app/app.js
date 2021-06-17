@@ -40,11 +40,11 @@ app.get('/room/:room', function(req, res){
         }
         console.log(rows);
 
-        t = rows[0].t;
-        console.log(t);
+        // t = rows[0].t;
+        // console.log(t);
 
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write(t);
+        res.write(rows);
         res.end();
     });
 
