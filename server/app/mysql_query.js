@@ -20,16 +20,12 @@ connection.connect()
 
 // INSERT 문
 module.exports.insert = function(sql) {
-  // var sql = 'INSERT INTO ' + table + ' values(?,?,?);';
-  // var params = [classnum, name, score];
   console.log(sql)
   connection.query(sql, function(err, rows) {
     console.log(rows);
     if(rows != undefined){
-      // arduino.client.write("success")
       arduino.res.send("success")
     }else{
-      // arduino.client.write("false")
       arduino.res.send("false")
     }
   })
@@ -49,7 +45,6 @@ module.exports.select = function(sql) {
       console.log(result)
       android.res.send(result)
       android.res.end()
-      // arduino.client.send("succes : " + result)
 
     } 
   })

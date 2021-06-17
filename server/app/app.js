@@ -62,21 +62,6 @@ app.get('/app/set/:sensor', function(req, res){
     var sensor = req.params.sensor;
 
     var sql = 'SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'';
-    var room = '';
-    // connection.query(sql, function(error, rows, fields){
-    //     if(error){
-    //         console.log(error);
-    //     }
-         
-    //     room = rows[0].room;
-        
-    //     // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    //     // res.write(room);
-    //     res.send({roomNum : room});
-    //     res.end();
-        
-        
-    // });
 
     query.select(sql)
 })
@@ -92,22 +77,6 @@ app.get('/app/notice/:room', function(req, res) {
                ' FROM roomInfo ri , fireExtinguisher fe , `exit` ex' +
                ' WHERE ri.room = \'' + room + '\' AND fe.feno = ri.feno AND ex.exno = ri.exno ';
 
-
-    var feLocation = '';
-    var exLocation = '';
-    // connection.query(sql, function(error, rows, fields){
-    //     if(error){
-    //         console.log(error);
-    //     }
-         
-    //     feLocation = rows[0].feLocation;
-    //     exLocation = rows[0].exLocation;
-
-    //     // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    //     // res.write(feLocation + ', ' + exLocation);
-    //     res.send({fire : feLocation, exit: exLocation});
-    //     res.end();
-    // })
 
     query.select(sql)
 })
