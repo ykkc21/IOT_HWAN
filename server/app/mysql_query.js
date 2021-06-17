@@ -59,7 +59,7 @@ module.exports.select = function(sql) {
 
       var result = JSON.stringify(rows)
       console.log(result)
-      android.res.send("success : " + result)
+      android.res.send(result)
       android.res.end()
       // arduino.client.send("succes : " + result)
 
