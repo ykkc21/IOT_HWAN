@@ -60,12 +60,12 @@ app.get('/room/:room', function(req, res){
 
         // name = rows[0].name;
         // console.log(name);
-        t = rows[0].t;
-        console.log(t);
+        // t = rows[0].t;
+        // console.log(t);
 
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
         // res.write(name);
-        res.write(t);
+        res.write(rows);
         res.end();
     });
 
