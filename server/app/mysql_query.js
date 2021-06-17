@@ -26,9 +26,11 @@ module.exports.insert = function(sql) {
   connection.query(sql, function(err, rows) {
     console.log(rows);
     if(rows != undefined){
-      server.client.write("success")
+      // arduino.client.write("success")
+      arduino.res.send("success")
     }else{
-      server.client.write("false")
+      // arduino.client.write("false")
+      arduino.res.send("false")
     }
   })
 }
