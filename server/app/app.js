@@ -30,21 +30,20 @@ app.get('/room/:room', function(req, res){
     console.log('room 번호 : ' + room);
 
     // 쿼리 수행
-    // var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
-    var sql = 'SELECT room, `date` as t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
+    var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
     console.log(sql);
-    var t = '';
+    var name = '';
     connection.query(sql, function(error, rows, fields){
         if (error){
             console.log(error);
         }
         console.log(rows);
 
-        // t = rows[0].t;
-        // console.log(t);
+        name = rows[0].name;
+        console.log(name);
 
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.write(rows);
+        res.write(name);
         res.end();
     });
 
