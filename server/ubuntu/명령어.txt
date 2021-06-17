@@ -81,6 +81,10 @@ mysql> create database hwan default character set utf8;
 mysql> grant all on hwan.* to 'hwanroot'@'%' identified by '1234' with grant option;
 mysql> grant all privileges on *.* to 'hwanroot'@'%' with grant option;
 
+- 타임존 설정
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p hwan // 에러 남
+
+
 ================================
 - mysql 설치
 sudo npm install mysql

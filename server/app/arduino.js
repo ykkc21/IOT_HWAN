@@ -3,6 +3,7 @@ const server = require('http').createServer(app);
 const query = require('./mysql_query');
 const path = require('path');
 const android = require('./app')
+require('date-utils');
 
 app.set('port', process.env.PORT || 3030);
 app.set('views', path.join(__dirname, 'views'));
@@ -29,8 +30,11 @@ app.get('/arduino/sensor/:sensor/gas/:gas', function(req, res){
     var sensor = params.sensor;
     var gas = params.gas;
 
+    var newDate = new Date();
+    var time = newDate.toFormat('yyyymmddHHMMSS');
+
     var sql = 'INSERT INTO hwan.gasHistory (room, `date`, gas) VALUES((SELECT room FROM roomInfo WHERE sensor = \'' 
-        + sensor + '\'), NOW(), ' + gas + ')';
+        + sensor + '\'), ' + time + ', ' + gas + ')';
 
     query.insert(sql);
 })
