@@ -125,7 +125,7 @@ app.get('/app/gas/:room', function(req, res){
 
     var room = req.params.room;
 
-    var sql = 'SELECT gas FROM gasHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
+    var sql = 'SELECT gas FROM gasHistory WHERE room=\'' + room + '\' ORDER BY gasNo DESC LIMIT 1';
 
     query.select(sql)
 })
@@ -138,7 +138,7 @@ app.get('/app/fire/:room', function(req, res){
 
     var room = req.params.room;
 
-    var sql = 'SELECT room, DATE_FORMAT(`date`, "%Y-%m-%d %H:%i:%s") AS t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
+    var sql = 'SELECT room, DATE_FORMAT(`date`, "%Y-%m-%d %H:%i:%s") AS t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY fireNo DESC LIMIT 1';
 
     query.select(sql)
 })
