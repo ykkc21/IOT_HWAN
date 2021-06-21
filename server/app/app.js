@@ -2,7 +2,6 @@
 const app = require('express')();
 const server = require('http').createServer(app);
 const query = require('./mysql_query');
-const path = require('path');
 
 // 서버 포트 설정
 app.set('port', process.env.PORT || 3000);  
@@ -17,6 +16,7 @@ app.get('/', (req, res) => {
 //
 // 앱 부분
 //
+
 // 화재감지기 제품번호 확인 
 // 3.35.55.95:3000/app/set/센서시리얼번호 로 접근시
 app.get('/app/set/:sensor', function(req, res){

@@ -1,4 +1,4 @@
-//mysql모듈 - mysql 사용
+// 모듈 선언
 const mysql = require('mysql')
 const android = require('./app')
 const arduino = require('./arduino')
@@ -43,6 +43,8 @@ module.exports.select = function(sql) {
 
       var result = JSON.stringify(rows)
       console.log(result)
+
+      // select 결과 android 클라이언트(포트 3000)로 전송
       android.res.send(result)
       android.res.end()
 
