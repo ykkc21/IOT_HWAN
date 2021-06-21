@@ -27,14 +27,13 @@ app.set('view engine', 'html');
 
 
 app.get('/', (req, res) => {
-    // res.send('Hello, Express');
-    res.sendFile(path.join(__dirname, '/index.html'));
+    res.send('Hello, Express');
+    // res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 //
 // 테스트용
 //
-
 // 거주자 이름 확인
 app.get('/room/:room', function(req, res){
 
@@ -47,20 +46,6 @@ app.get('/room/:room', function(req, res){
 
     // 쿼리 수행
     var sql = 'SELECT room, DATE_FORMAT(`date`, "%Y-%m-%d %H:%i:%s") AS t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
-
-    // console.log(sql);
-    // // var name = '';
-    // var result = '';
-    // connection.query(sql, function(error, rows, fields){
-    //     if (error){
-    //         console.log(error);
-    //     }
-
-    //     var result = JSON.stringify(rows)
-    //     console.log(result)
-    //     res.send(result);
-    //     res.end();
-    // });
 
     query.select(sql)
 
