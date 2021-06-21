@@ -3,22 +3,22 @@ const server = require('http').createServer(app);
 const query = require('./mysql_query');
 const path = require('path');
 const arduino = require('./arduino')
-const mysql = require('mysql')
+// const mysql = require('mysql')
 
-// 데이터베이스 부분
-// 데이터베이스와 연결할 객체 생성
-var connection = mysql.createConnection({
-    // DataBase 주소
-    host : 'localhost',
-    // user
-    user : 'hwanroot',
-    // password
-    password : '1234',
-    // DataBase 이름
-    database : 'hwan'
-})
-// 데이터베이스 연결
-connection.connect()
+// // 데이터베이스 부분
+// // 데이터베이스와 연결할 객체 생성
+// var connection = mysql.createConnection({
+//     // DataBase 주소
+//     host : 'localhost',
+//     // user
+//     user : 'hwanroot',
+//     // password
+//     password : '1234',
+//     // DataBase 이름
+//     database : 'hwan'
+// })
+// // 데이터베이스 연결
+// connection.connect()
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -46,32 +46,23 @@ app.get('/room/:room', function(req, res){
     console.log('room 번호 : ' + room);
 
     // 쿼리 수행
-    // var sql = 'SELECT * FROM roomInfo WHERE room = \'' + room + '\'';
-    // var sql = 'SELECT room, `date` as t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
     var sql = 'SELECT room, DATE_FORMAT(`date`, "%Y-%m-%d %H:%i:%s") AS t FROM fireHistory WHERE room=\'' + room + '\' ORDER BY `date` DESC LIMIT 1';
 
-    console.log(sql);
-    // var name = '';
-    var result = '';
-    connection.query(sql, function(error, rows, fields){
-        if (error){
-            console.log(error);
-        }
-        // console.log(rows);
+    // console.log(sql);
+    // // var name = '';
+    // var result = '';
+    // connection.query(sql, function(error, rows, fields){
+    //     if (error){
+    //         console.log(error);
+    //     }
 
-        // name = rows[0].name;
-        // console.log(name);
-        // t = rows[0].t;
-        // console.log(t);
+    //     var result = JSON.stringify(rows)
+    //     console.log(result)
+    //     res.send(result);
+    //     res.end();
+    // });
 
-        // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        // res.write(name);
-        // res.write(rows);
-        var result = JSON.stringify(rows)
-        console.log(result)
-        res.send(result);
-        res.end();
-    });
+    query.select(sql)
 
 });
 
@@ -88,7 +79,7 @@ app.get('/app/set/:sensor', function(req, res){
     var sensor = req.params.sensor;
 
     var sql = 'SELECT room FROM roomInfo WHERE sensor = \'' + sensor + '\'';
-    var room = '';
+    // var room = '';
 
     query.select(sql)
 })
