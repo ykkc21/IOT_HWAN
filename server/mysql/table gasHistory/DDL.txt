@@ -1,0 +1,9 @@
+CREATE TABLE `gasHistory` (
+  `gasNo` int(11) NOT NULL AUTO_INCREMENT COMMENT '가스 번호',
+  `room` varchar(20) NOT NULL,
+  `date` datetime NOT NULL COMMENT '일시',
+  `gas` int(11) DEFAULT NULL,
+  PRIMARY KEY (`gasNo`),
+  KEY `gasHistory_FK` (`room`),
+  CONSTRAINT `gasHistory_FK` FOREIGN KEY (`room`) REFERENCES `roomInfo` (`room`)
+) ENGINE=InnoDB AUTO_INCREMENT=53187 DEFAULT CHARSET=utf8 COMMENT='가스 기록'

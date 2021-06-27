@@ -1,0 +1,14 @@
+CREATE TABLE `roomInfo` (
+  `room` varchar(20) NOT NULL COMMENT '호수',
+  `name` varchar(20) DEFAULT NULL COMMENT '거주자 이름',
+  `tel` varchar(50) DEFAULT NULL COMMENT '거주자 연락처',
+  `sensor` varchar(50) NOT NULL COMMENT '화재감지기 번호',
+  `exno` varchar(20) DEFAULT NULL COMMENT '근처 비상구 번호',
+  `feno` varchar(20) DEFAULT NULL COMMENT '근처 소화기 번호',
+  PRIMARY KEY (`room`),
+  KEY `roomInfo_FK_1` (`exno`),
+  KEY `roomInfo_FK_2` (`feno`),
+  CONSTRAINT `roomInfo_FK` FOREIGN KEY (`room`) REFERENCES `houserInfo` (`room`),
+  CONSTRAINT `roomInfo_FK_1` FOREIGN KEY (`exno`) REFERENCES `exit` (`exno`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `roomInfo_FK_2` FOREIGN KEY (`feno`) REFERENCES `fireExtinguisher` (`feno`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='호수 정보'

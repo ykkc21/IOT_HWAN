@@ -1,0 +1,6 @@
+CREATE TABLE `houserInfo` (
+  `room` varchar(20) NOT NULL COMMENT '호수',
+  `floor` int(11) NOT NULL COMMENT '층수',
+  `info` varchar(50) DEFAULT NULL COMMENT '호실이름',
+  PRIMARY KEY (`room`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='주택 정보'

@@ -1,0 +1,8 @@
+CREATE TABLE `fireHistory` (
+  `fireNo` int(11) NOT NULL AUTO_INCREMENT COMMENT '화재 번호',
+  `date` datetime NOT NULL COMMENT '화재 발생일시',
+  `room` varchar(20) NOT NULL COMMENT '호수',
+  PRIMARY KEY (`fireNo`),
+  KEY `fireHistory_FK` (`room`),
+  CONSTRAINT `fireHistory_FK` FOREIGN KEY (`room`) REFERENCES `houserInfo` (`room`)
+) ENGINE=InnoDB AUTO_INCREMENT=309 DEFAULT CHARSET=utf8 COMMENT='화재 이력'
