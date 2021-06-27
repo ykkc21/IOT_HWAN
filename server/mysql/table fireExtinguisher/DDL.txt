@@ -1,0 +1,6 @@
+CREATE TABLE `fireExtinguisher` (
+  `feno` varchar(20) NOT NULL COMMENT '소화기 번호',
+  `floor` int(11) NOT NULL COMMENT '층수',
+  `location` varchar(50) NOT NULL COMMENT '위치',
+  PRIMARY KEY (`feno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='소화기 정보'

@@ -1,0 +1,6 @@
+CREATE TABLE `exit` (
+  `exno` varchar(20) NOT NULL COMMENT '비상구 번호',
+  `floor` int(11) NOT NULL COMMENT '층수',
+  `location` varchar(50) NOT NULL COMMENT '위치',
+  PRIMARY KEY (`exno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='비상구 정보'
